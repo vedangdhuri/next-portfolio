@@ -32,3 +32,4 @@
 , "components/pages/Background/Starbackground.tsx"  ],
   "exclude": ["node_modules"]
 }
+
