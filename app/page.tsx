@@ -5,6 +5,7 @@ import Hero from "@/components/pages/Hero/Hero";
 import SkillsSection from "@/components/pages/Skills/Skills";
 import Loader from "@/components/pages/Loader/Loader";
 import { useEffect, useState } from "react";
+import ProjectsPreview from "@/components/pages/Project/ProjectsPreview";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -25,9 +26,18 @@ export default function Home() {
         className={`transition-opacity duration-1000 ${loading ? "opacity-0" : "opacity-100"}`}
       >
         <Hero />
-        <About />
-        <SkillsSection />
-        <Contact />
+        <div id="about">
+          <About />
+        </div>
+        <div id="skills">
+          <SkillsSection />
+        </div>
+        <div id="projects">
+          <ProjectsPreview />
+        </div>
+        <div id="contact">
+          <Contact />
+        </div>
       </div>
     </>
   );

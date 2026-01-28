@@ -49,7 +49,7 @@ const slugs: string[] = [
   // "sonarqube",
 ];
 
-export default function IconCloudDemo(): JSX.Element {
+export default function IconCloudDemo() {
   return (
     <div className="relative flex size-full max-w-lg items-center justify-center overflow-hidden rounded-lg bg-transparent px-20 pb-20 pt-8">
       <IconCloud iconSlugs={slugs} />
