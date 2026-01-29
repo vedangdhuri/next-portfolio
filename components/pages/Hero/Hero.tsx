@@ -6,6 +6,7 @@ import ProfileCard from "../../ui/ProfileCard/ProfileCard";
 import avtarUrl from "../../../public/img/main_image.png";
 import codeIcon from "../../../public/img/code.png";
 import { FlipWords } from "../../ui/FlipWords";
+import { SparklesText } from "@/components/ui/sparkles-text";
 
 const Hero = () => {
   const words = [
@@ -38,12 +39,14 @@ const Hero = () => {
               <span className="font-bold text-white">Vedang Dhuri</span> a
             </h2>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 leading-tight">
-            Creative{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
-              Developer
-            </span>
-          </h1>
+          <SparklesText sparklesCount={10}>
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 leading-tight">
+              Creative{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
+                Developer
+              </span>
+            </h1>
+          </SparklesText>
 
           <div className="text-xl md:text-3xl text-blue-400 font-bold mb-8 h-8">
             <span className="text-white">I&apos;m a</span>
@@ -61,7 +64,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 font-bold">
             <a
               href="#projects"
-              className="group flex items-center justify-center px-8 py-3 bg-blue-400 hover:bg-blue-700 text-white rounded-full transition-all duration-300 transform hover:scale-105"
+              className="group flex items-center justify-center px-8 py-3 bg-blue-400 hover:bg-blue-700 text-white rounded-full transition-all duration-300 transform hover:scale-105 cursor-target"
             >
               View Work
               <ArrowRight
@@ -71,7 +74,7 @@ const Hero = () => {
             </a>
             <a
               href="#contact"
-              className="flex items-center justify-center px-8 py-3 border border-white/20 hover:bg-white/10 text-white rounded-full transition-all duration-300 backdrop-blur-sm"
+              className="flex items-center justify-center px-8 py-3 border border-white/20 hover:bg-white/10 text-white rounded-full transition-all duration-300 backdrop-blur-sm cursor-target"
             >
               Contact Me
             </a>
@@ -93,13 +96,14 @@ const Hero = () => {
             innerGradient="linear-gradient(145deg,hsla(199, 40%, 45%, 0.55) 0%,hsla(11, 60%, 70%, 0.27) 100%)"
             avatarUrl={avtarUrl.src}
             iconUrl={codeIcon.src}
+            className="cursor-target"
           />
 
           {/* Floating Elements */}
           <motion.div
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-0 right-10 bg-black/50 backdrop-blur-md p-4 rounded-xl border border-white/10"
+            className="absolute top-0 right-10 bg-black/50 backdrop-blur-md p-4 rounded-xl border border-white/10 cursor-target"
           >
             <span className="text-2xl">🚀</span>
           </motion.div>
@@ -112,7 +116,7 @@ const Hero = () => {
               ease: "easeInOut",
               delay: 1,
             }}
-            className="absolute bottom-10 left-0 bg-black/50 backdrop-blur-md p-4 rounded-xl border border-white/10"
+            className="absolute bottom-10 left-0 bg-black/50 backdrop-blur-md p-4 rounded-xl border border-white/10 cursor-target"
           >
             <span className="text-2xl">💻</span>
           </motion.div>
@@ -142,4 +146,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

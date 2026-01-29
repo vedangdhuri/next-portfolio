@@ -11,7 +11,7 @@ const Loader = () => {
           rotate: 360,
         }}
         transition={{
-          duration: 2,
+          duration: 1,
           repeat: Infinity,
           ease: "linear",
         }}

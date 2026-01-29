@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen bg-neutral-950 text-neutral-100">
+    <main className="min-h-screen text-neutral-100">
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Back to Home */}
         <Link

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
@@ -111,7 +112,6 @@ export default function IconCloud({
 
   return (
     <Cloud {...cloudProps}>
-      <>
         {renderedIcons}
 
         {imageArray.map((image, index) => (
@@ -128,7 +128,6 @@ export default function IconCloud({
             />
           </a>
         ))}
-      </>
     </Cloud>
   );
 }

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-// import CustomCursor from "@/components/ui/CustomCursor";
 import { Navbar } from "@/components/pages/Navbar/Navbar";
 import { Footer } from "@/components/pages/Footer/Footer";
 import { StarBackground } from "@/components/pages/Background/Starbackground";
+import TargetCursor from "@/components/ui/TargetCursor";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,15 +19,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html>
+    <html lang="en">
       <head>
         <link rel="icon" href="/img/top_icon.png" />
       </head>
       <body
         className={`${inter.className} bg-black text-white overflow-x-hidden`}
       >
+        <TargetCursor />
         <StarBackground />
-        {/* <CustomCursor /> */}
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />

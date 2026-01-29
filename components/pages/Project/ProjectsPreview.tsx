@@ -26,10 +26,10 @@ export default function ProjectsPreview() {
         </div>
 
         {/* View All Button */}
-        <div className="flex justify-center">
+        <div className="flex justify-center ">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-neutral-100 bg-neutral-800 border border-neutral-700 rounded-xl hover:bg-neutral-700 hover:border-neutral-600 transition-all duration-300 group"
+            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-neutral-100 bg-neutral-800 border border-neutral-700 rounded-xl hover:bg-neutral-700 hover:border-neutral-600 transition-all duration-300 group cursor-target"
           >
             <svg
               className="w-4 h-4"

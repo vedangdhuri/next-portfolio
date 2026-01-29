@@ -285,6 +285,7 @@
 
 .meteor {
   opacity: 0;
+  transition-delay: 2s;
   animation-fill-mode: both;
 }
 

@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 import {
   FaLaptopCode,
@@ -21,7 +20,6 @@ const navItems = [
 ];
 
 export const Navbar = () => {
-  const pathname = usePathname();
   const [activeLink, setActiveLink] = useState("");
 
   useEffect(() => {
@@ -36,18 +34,15 @@ export const Navbar = () => {
     }
   }, []);
 
-  useEffect(() => {
-    setActiveLink(pathname);
-  }, [pathname]);
-
   return (
     <>
-      <nav className="w-max z-50 fixed bg-gray-700/10 -translate-x-2/4 flex gap-[0.8rem] backdrop-blur-sm px-4 py-[0.4rem] rounded-[3rem] left-2/4 bottom-8 animate-fade-in">
-        <div className="flex gap-3">
+      <nav className="w-max z-50 fixed bg-gray-700/10 -translate-x-2/4 flex gap-[0.8rem] backdrop-blur-sm px-4 py-[0.5rem] rounded-[3rem] left-2/4 bottom-6 animate-fade-in">
+        <div className="flex gap-4">
           {navItems.map((item, key) => (
             <Link
               key={key}
               href={item.href}
+              onClick={() => setActiveLink(item.href)}
               className={cn(
                 "flex text-[1.1rem] p-[0.9rem] rounded-[50%] transition-all duration-300",
                 activeLink === item.href

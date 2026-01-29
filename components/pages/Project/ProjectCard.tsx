@@ -1,3 +1,4 @@
+import { Meteors } from "@/components/ui/Meteors/meteors";
 import { Project } from "@/types/project";
 
 interface ProjectCardProps {
@@ -6,7 +7,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="group relative bg-gradient-to-br from-neutral-900 to-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden transition-all duration-500 hover:border-neutral-600 hover:shadow-2xl hover:shadow-neutral-900/50 hover:-translate-y-1">
+    <article className="group relative bg-gradient-to-br from-[#0f1e30] to-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden transition-all duration-500 hover:border-blue-400 hover:shadow-2xl hover:shadow-neutral-900/50 hover:-translate-y-1 cursor-target">
       {/* Thumbnail */}
       <div className="relative h-56 overflow-hidden bg-neutral-800">
         <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/20 to-transparent z-10" />
@@ -14,10 +15,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           {/* <div className="text-8xl font-bold text-neutral-700 italic select-none">
             v
           </div> */}
-          <img
-            src={project.thumbnail} 
-            alt={project.title}
-            />
+          <img src={project.thumbnail} alt={project.title} />
         </div>
         {/* Hover effect */}
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
@@ -70,6 +68,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               />
             </svg>
           </a>
+          <Meteors number={20} />
         </div>
       </div>
     </article>
