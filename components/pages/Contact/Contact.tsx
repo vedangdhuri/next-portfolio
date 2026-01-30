@@ -118,7 +118,6 @@ const Contact = () => {
             className="p-8 rounded-2xl border border-blue-400/80 bg-[#08101a] z-1"
           >
             <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
-
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2 ">

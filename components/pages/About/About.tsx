@@ -63,10 +63,11 @@ const About = () => {
                     encryptedClassName="text-neutral-500"
                     revealedClassName="dark:text-white text-black"
                     revealDelayMs={20}
+                    charset="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
                   />
                 </p>
                 <br />
-                
+
                 <p>
                   <EncryptedText
                     text="My approach combines technical expertise with creative
@@ -78,6 +79,7 @@ const About = () => {
                     encryptedClassName="text-neutral-500"
                     revealedClassName="dark:text-white text-black"
                     revealDelayMs={20}
+                    charset="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
                   />
                 </p>
               </div>
@@ -95,6 +97,7 @@ const About = () => {
             <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
               <span className="text-blue-500">02.</span> Education
             </h3>
+
             <div className="space-y-8 ">
               {education.map((edu, index) => (
                 <div

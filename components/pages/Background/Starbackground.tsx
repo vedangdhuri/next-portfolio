@@ -22,18 +22,20 @@ interface Meteor {
 export const StarBackground = () => {
     const [stars, setStars] = useState<Star[]>([]);
     const [meteors, setMeteors] = useState<Meteor[]>([]);
+    const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    useEffect(() => {
+        if (!isClient) return;
+
         generateStars();
 
         const t = setTimeout(() => {
             generateMeteors();
         }, 1500);
-
-        return () => clearTimeout(t);
-    }, []);
-
-    useEffect(() => {
 
         const handleResize = () => {
             generateStars();
@@ -41,8 +43,11 @@ export const StarBackground = () => {
 
         window.addEventListener("resize", handleResize);
 
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
+        return () => {
+            clearTimeout(t);
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [isClient]);
 
     const generateStars = () => {
         const numberOfStars = Math.floor(
@@ -82,6 +87,10 @@ export const StarBackground = () => {
 
         setMeteors(newMeteors);
     };
+
+    if (!isClient) {
+        return null;
+    }
 
     return (
         <div className="fixed inset-0 overflow-hidden pointer-events-none z-0 blur-[2px] opacity-60">

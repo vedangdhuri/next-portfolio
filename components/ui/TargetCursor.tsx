@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useEffect, useRef, useCallback, useMemo, useState } from 'react';
 import { gsap } from 'gsap';
 
 export interface TargetCursorProps {
@@ -27,13 +27,15 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
   const tickerFnRef = useRef<(() => void) | null>(null);
   const activeStrengthRef = useRef({ current: 0 });
 
-  const isMobile = useMemo(() => {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  useEffect(() => {
     const hasTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     const isSmallScreen = window.innerWidth <= 768;
     const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
     const mobileRegex = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
     const isMobileUserAgent = mobileRegex.test(userAgent.toLowerCase());
-    return (hasTouchScreen && isSmallScreen) || isMobileUserAgent;
+    setIsMobile((hasTouchScreen && isSmallScreen) || isMobileUserAgent);
   }, []);
 
   const constants = useMemo(() => ({ borderWidth: 3, cornerSize: 12 }), []);

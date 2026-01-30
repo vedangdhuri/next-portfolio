@@ -1,4 +1,5 @@
-import { Meteors } from "@/components/ui/Meteors/meteors";
+"use client";
+
 import { Project } from "@/types/project";
 
 interface ProjectCardProps {
@@ -68,7 +69,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               />
             </svg>
           </a>
-          <Meteors number={20} />
         </div>
       </div>
     </article>

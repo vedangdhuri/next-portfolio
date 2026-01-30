@@ -65,7 +65,7 @@ const ContactTest = () => {
             transition={{ duration: 0.6 }}
             className="flex justify-center"
           >
-            <div className="relative w-full max-w-md h-[420px]">
+            <div className="relative w-full max-w-md h-26.25">
               <IconCloudDemo />
             </div>
           </motion.div>
