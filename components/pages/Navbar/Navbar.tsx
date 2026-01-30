@@ -36,7 +36,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="w-max z-50 fixed bg-gray-700/10 -translate-x-2/4 flex gap-[0.8rem] backdrop-blur-sm px-4 py-[0.5rem] rounded-[3rem] left-2/4 bottom-6 animate-fade-in">
+      <nav className="w-max z-[9999] fixed bg-gray-700/10 -translate-x-2/4 flex gap-[0.8rem] backdrop-blur-sm px-4 py-[0.5rem] rounded-[3rem] left-2/4 bottom-6 animate-fade-in">
         <div className="flex gap-4">
           {navItems.map((item, key) => (
             <Link

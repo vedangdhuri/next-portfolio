@@ -23,7 +23,7 @@ export const education = [
 
 const About = () => {
   return (
-    <section id="about" className="py-20 text-white">
+    <section id="about" className="py-20 text-white z-50">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -92,7 +92,7 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="z-100"
+            className="z-50"
           >
             <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
               <span className="text-blue-500">02.</span> Education
