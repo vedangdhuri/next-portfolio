@@ -49,81 +49,65 @@ const SpaceProfileCard: React.FC<SpaceProfileCardProps> = ({ avatarUrl }) => {
   return (
     <div
       ref={cardRef}
-      className="relative w-[370px] h-[370px] rounded-full cursor-pointer transition-transform duration-300 ease-out"
+      className="group relative w-[370px] h-[370px] rounded-full cursor-pointer transition-transform duration-300 ease-out"
       style={{ transformStyle: "preserve-3d" }}
     >
-      {/* Moonlight halo — soft silvery outer glow */}
+      {/* Clean circular avatar */}
       <div
-        className="absolute inset-[-30px] rounded-full animate-pulse-slow"
+        className="absolute inset-0 rounded-full overflow-hidden border-2 border-white/10"
         style={{
-          background:
-            "radial-gradient(circle, rgba(200,210,240,0.08) 30%, rgba(140,160,220,0.04) 50%, transparent 70%)",
-        }}
-      />
-
-      {/* Spinning orbital dust ring */}
-      <div className="absolute inset-[-6px] rounded-full animate-avatar-ring-spin opacity-60">
-        <div
-          className="w-full h-full rounded-full"
-          style={{
-            background:
-              "conic-gradient(from 0deg, transparent 0%, rgba(180,190,220,0.25) 12%, transparent 25%, rgba(160,170,210,0.2) 45%, transparent 55%, rgba(190,200,230,0.2) 75%, transparent 88%)",
-          }}
-        />
-      </div>
-
-      {/* Moon body */}
-      <div
-        className="absolute inset-0 rounded-full overflow-hidden"
-        style={{
-          boxShadow:
-            "0 0 50px rgba(180,190,230,0.12), 0 0 100px rgba(140,150,200,0.06), inset -30px -10px 60px rgba(0,0,0,0.6), inset 8px 8px 30px rgba(200,210,240,0.08)",
+          boxShadow: "0 0 40px rgba(100,120,200,0.1)",
         }}
       >
-        {/* Avatar image */}
         <Image
           src={avatarUrl}
           alt="Profile"
           fill
           className="object-cover object-top"
-          sizes="350px"
+          style={{ filter: "brightness(0.7) contrast(1.1) saturate(0.8)" }}
+          sizes="370px"
           priority
         />
+        {/* Dark space tint overlay */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-b from-blue-900/20 via-transparent to-indigo-950/40" />
 
-        {/* Moon surface shadow — crescent dark side */}
-        <div
-          className="absolute inset-0 rounded-full"
-          style={{
-            background:
-              "linear-gradient(135deg, transparent 30%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.45) 75%, rgba(0,0,0,0.7) 100%)",
-          }}
-        />
-
-        {/* Moonlight highlight — top-left illumination */}
-        <div
-          className="absolute inset-0 rounded-full"
-          style={{
-            background:
-              "radial-gradient(ellipse at 25% 20%, rgba(220,225,245,0.12) 0%, transparent 50%)",
-          }}
-        />
-
-        {/* Subtle crater texture — circular shadows */}
-        <div className="absolute inset-0 rounded-full opacity-20">
-          <div className="absolute w-6 h-6 rounded-full top-[18%] left-[22%] shadow-[inset_1px_1px_3px_rgba(0,0,0,0.4)] bg-white/3" />
-          <div className="absolute w-4 h-4 rounded-full top-[55%] left-[15%] shadow-[inset_1px_1px_2px_rgba(0,0,0,0.3)] bg-white/2" />
-          <div className="absolute w-8 h-8 rounded-full top-[35%] right-[20%] shadow-[inset_2px_2px_4px_rgba(0,0,0,0.35)] bg-white/3" />
-          <div className="absolute w-3 h-3 rounded-full bottom-[25%] right-[30%] shadow-[inset_1px_1px_2px_rgba(0,0,0,0.3)] bg-white/2" />
+        {/* Hover stars overlay */}
+        <div className="absolute inset-0 rounded-full pointer-events-none">
+          {[
+            { top: "12%", left: "18%", size: 8, delay: 0 },
+            { top: "8%", left: "55%", size: 6, delay: 0.15 },
+            { top: "22%", left: "78%", size: 10, delay: 0.3 },
+            { top: "45%", left: "10%", size: 7, delay: 0.1 },
+            { top: "60%", left: "85%", size: 9, delay: 0.25 },
+            { top: "75%", left: "25%", size: 6, delay: 0.4 },
+            { top: "82%", left: "65%", size: 8, delay: 0.05 },
+            { top: "35%", left: "40%", size: 5, delay: 0.35 },
+            { top: "50%", left: "60%", size: 7, delay: 0.2 },
+            { top: "18%", left: "38%", size: 6, delay: 0.45 },
+          ].map((star, i) => (
+            <div
+              key={i}
+              className="absolute opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 ease-out"
+              style={{
+                top: star.top,
+                left: star.left,
+                transitionDelay: `${star.delay}s`,
+                filter: `drop-shadow(0 0 ${star.size / 2}px rgba(180,200,255,0.8))`,
+              }}
+            >
+              <svg
+                width={star.size}
+                height={star.size}
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="text-white/90 animate-[star-twinkle_2s_ease-in-out_infinite]"
+                style={{ animationDelay: `${star.delay * 2}s` }}
+              >
+                <path d="M12 0l3.09 8.26L24 9.27l-6.91 5.52L19.09 24 12 18.9 4.91 24l1.91-9.21L0 9.27l8.91-1.01z" />
+              </svg>
+            </div>
+          ))}
         </div>
-
-        {/* Atmospheric rim light — thin bright edge */}
-        <div
-          className="absolute inset-0 rounded-full"
-          style={{
-            background:
-              "radial-gradient(circle, transparent 60%, rgba(180,190,230,0.06) 85%, rgba(200,210,240,0.1) 95%, transparent 100%)",
-          }}
-        />
 
         {/* Interactive glow */}
         <div
@@ -131,9 +115,6 @@ const SpaceProfileCard: React.FC<SpaceProfileCardProps> = ({ avatarUrl }) => {
           className="absolute inset-0 rounded-full pointer-events-none transition-all duration-200"
         />
       </div>
-
-      {/* Bottom horizon light — reflected light from space */}
-      <div className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-2/3 h-[2px] bg-gradient-to-r from-transparent via-slate-300/20 to-transparent blur-[3px]" />
     </div>
   );
 };

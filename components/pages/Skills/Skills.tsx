@@ -39,6 +39,7 @@ import { TbBrandVscode } from "react-icons/tb";
 import { BsFileEarmarkCode, BsGrid1X2 } from "react-icons/bs";
 import { MdAnimation } from "react-icons/md";
 import { MdAutoAwesomeMotion } from "react-icons/md";
+import { RiAlibabaCloudLine } from "react-icons/ri";
 import { LucideIcon } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -132,9 +133,6 @@ const SkillCard = ({
       style={{ opacity: 0, perspective: "600px" }}
     >
       <Card className="group relative overflow-hidden bg-[#08101a] border-gray-700 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20 z-100 hover:border-blue-500/30 h-full">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(100,100,255,0.1)] to-transparent group-hover:via-[rgba(100,100,255,0.2)] animate-shimmer"></div>
-        {/* Rotating gradient border on hover */}
-        <div className="absolute -inset-[1px] rounded-xl bg-[conic-gradient(from_var(--border-angle),transparent_30%,rgba(59,130,246,0.3)_50%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 animate-border-rotate"></div>
         <CardContent className="p-6 relative z-10 cursor-target h-full">
           <CometCard>
             <div className="flex flex-col h-full">
@@ -343,6 +341,10 @@ const SkillsSection = () => {
         {
           name: "Motion Graphics",
           icon: <MdAutoAwesomeMotion className="w-4 h-4 text-[#FF6D00]" />,
+        },
+        {
+          name: "GSAP Animation",
+          icon: <RiAlibabaCloudLine className="w-4 h-4 text-[#50755a]" />,
         },
       ],
     },

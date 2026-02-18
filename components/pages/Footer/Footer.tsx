@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -49,75 +50,90 @@ export const Footer = () => {
   const nameRef = useRef<HTMLDivElement>(null);
   const socialsRef = useRef<HTMLDivElement>(null);
   const navLinksRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
-    // Name reveal
-    if (nameRef.current) {
-      gsap.fromTo(
-        nameRef.current,
-        { opacity: 0, y: 40, clipPath: "inset(100% 0 0 0)" },
-        {
-          opacity: 1,
-          y: 0,
-          clipPath: "inset(0% 0 0 0)",
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: nameRef.current,
-            start: "top 90%",
-            toggleActions: "restart none none reset",
-          },
-        },
-      );
-    }
+    const triggers: ScrollTrigger[] = [];
 
-    // Social icons staggered fly-in
-    if (socialsRef.current) {
-      const icons = socialsRef.current.children;
-      gsap.fromTo(
-        icons,
-        { opacity: 0, y: 30, scale: 0.5 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.5,
-          stagger: 0.08,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: socialsRef.current,
-            start: "top 92%",
-            toggleActions: "restart none none reset",
-          },
-        },
-      );
-    }
+    // Small delay to let DOM settle after route change
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
 
-    // Nav links stagger
-    if (navLinksRef.current) {
-      const links = navLinksRef.current.children;
-      gsap.fromTo(
-        links,
-        { opacity: 0, y: 15 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.4,
-          stagger: 0.06,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: navLinksRef.current,
-            start: "top 92%",
-            toggleActions: "restart none none reset",
+      // Name reveal
+      if (nameRef.current) {
+        gsap.fromTo(
+          nameRef.current,
+          { opacity: 0, y: 40, clipPath: "inset(100% 0 0 0)" },
+          {
+            opacity: 1,
+            y: 0,
+            clipPath: "inset(0% 0 0 0)",
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: nameRef.current,
+              start: "top 90%",
+              toggleActions: "restart none none reset",
+            },
           },
-        },
-      );
-    }
+        );
+        const st = ScrollTrigger.getAll().pop();
+        if (st) triggers.push(st);
+      }
+
+      // Social icons staggered fly-in
+      if (socialsRef.current) {
+        const icons = socialsRef.current.children;
+        gsap.fromTo(
+          icons,
+          { opacity: 0, y: 30, scale: 0.5 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            stagger: 0.08,
+            ease: "back.out(1.7)",
+            scrollTrigger: {
+              trigger: socialsRef.current,
+              start: "top 92%",
+              toggleActions: "restart none none reset",
+            },
+          },
+        );
+        const st = ScrollTrigger.getAll().pop();
+        if (st) triggers.push(st);
+      }
+
+      // Nav links stagger
+      if (navLinksRef.current) {
+        const links = navLinksRef.current.children;
+        gsap.fromTo(
+          links,
+          { opacity: 0, y: 15 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            stagger: 0.06,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: navLinksRef.current,
+              start: "top 92%",
+              toggleActions: "restart none none reset",
+            },
+          },
+        );
+        const st = ScrollTrigger.getAll().pop();
+        if (st) triggers.push(st);
+      }
+    }, 100);
 
     return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
+      clearTimeout(timer);
+      triggers.forEach((st) => st.kill());
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <footer
