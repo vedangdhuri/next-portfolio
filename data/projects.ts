@@ -68,7 +68,6 @@ npm run dev
 3. Police receive real-time alerts and take action.
 4. Administrators access analytics for policy planning.
 
-# 🛠️ Tech Stack
 
 # ⚙️ Installation & Setup
 [Link](https://youtu.be/MkLX85XU5rU?si=VH0IeGVYaUHZkIDk)
@@ -95,8 +94,6 @@ In the area police station, only the police of area code 001 can view the compla
 - Improved citizen safety engagement
 - Data-driven urban policy planning
 - Transparent communication between authorities and citizens
-
-# 🏁 OUTPUT
 
 # 📜 License
 This project is licensed under the [MIT License](https://raw.githubusercontent.com/vedangdhuri/SafeCity-Hub/main/LICENSE).
